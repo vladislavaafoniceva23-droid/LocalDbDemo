@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfLocalDbDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Демо WPF + LocalDB" Height="400" Width="500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Padding="5" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Имя:" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtName" Width="150" Margin="5"/>
+                <Label Content="Возраст:" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBox x:Name="txtAge" Width="50" Margin="5"/>
+                <Button x:Name="btnAdd" Content="Добавить" Width="80" Margin="10,0,0,0" 
+Click="BtnAdd_Click"/>
+            </StackPanel>
+        </Border>
+
+        <DataGrid Grid.Row="1" x:Name="dgUsers" AutoGenerateColumns="False" CanUserAddRows="False"
+                  IsReadOnly="True" Margin="0,5,0,5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="2*"/>
+                <DataGridTextColumn Header="Возраст" Binding="{Binding Age}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnRefresh" Content="Обновить" Width="100" Margin="5" 
+Click="BtnRefresh_Click"/>
+            <Button x:Name="btnDelete" Content="Удалить выбранного" Width="120" Margin="5" 
+Click="BtnDelete_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
